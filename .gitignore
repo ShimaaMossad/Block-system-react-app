@@ -1,0 +1,21 @@
+# Ignore Node modules in all subfolders
+node_modules/
+
+# Ignore environment files in root
+.env
+.env.local
+.env.*.local
+
+# Ignore log files
+*.log
+
+# Ignore OS system files
+.DS_Store
+Thumbs.db
+
+# Ignore build folders (لو عندك build في الجذر)
+dist/
+build/
+
+# Ignore VSCode settings (اختياري)
+.vscode/
