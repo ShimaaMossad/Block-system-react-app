@@ -9,8 +9,10 @@ export default function Home() {
   const username = localStorage.getItem('username')
   const navigate = useNavigate()
 
+  const api = import.meta.env.VITE_API_URL
+
   const getPosts = async () => {
-    const res = await axios.get('http://localhost:5000/api/posts')
+    const res = await axios.get(`${api}/posts`)
     setPosts(res.data)
   }
 
@@ -19,7 +21,7 @@ export default function Home() {
   }, [])
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/posts/${id}`, {
+    await axios.delete(`${api}/posts/${id}`, {
       headers: { Authorization: localStorage.getItem('token') }
     })
     getPosts()
