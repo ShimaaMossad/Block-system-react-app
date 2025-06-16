@@ -9,10 +9,12 @@ export default function Register() {
   const [confirm, setConfirm] = useState('')
   const navigate = useNavigate()
 
+  const api = import.meta.env.VITE_API_URL
+
   const handleRegister = async (e) => {
     e.preventDefault()
     if (password !== confirm) return alert('Passwords do not match')
-    await axios.post('http://localhost:5000/api/auth/register', { username, email, password })
+    await axios.post(`${api}/auth/register`, { username, email, password })
     navigate('/login')
   }
 
