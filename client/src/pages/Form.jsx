@@ -19,14 +19,16 @@ export default function Form() {
     }
   }, [editPost])
 
+  const api = import.meta.env.VITE_API_URL
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (editPost) {
-      await axios.put(`http://localhost:5000/api/posts/${editPost._id}`, { title, body, image }, {
+      await axios.put(`${api}/posts/${editPost._id}`, { title, body, image }, {
         headers: { Authorization: localStorage.getItem('token') }
       })
     } else {
-      await axios.post('http://localhost:5000/api/posts', { title, body, image }, {
+      await axios.post(`${api}/posts`, { title, body, image }, {
         headers: { Authorization: localStorage.getItem('token') }
       })
     }
